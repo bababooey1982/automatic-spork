@@ -1,0 +1,37 @@
+{% set version = "20200713" %}
+
+package:
+  name: diff-match-patch
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/d/diff-match-patch/diff-match-patch-{{ version }}.tar.gz
+  sha256: da6f5a01aa586df23dfc89f3827e1cafbb5420be9d87769eeb079ddfd9477a18
+
+build:
+  noarch: python
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools >=38.6.0
+  run:
+    - python
+
+test:
+  imports:
+    - diff_match_patch
+
+about:
+  home: http://code.google.com/p/google-diff-match-patch/
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Diff Match Patch is a high-performance library in multiple languages that manipulates plain text
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - ccordoba12
